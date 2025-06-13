@@ -3,7 +3,7 @@ body {
 }
 
 header {
-    background: url('../assets/img/hero-karate.jpg') center center/cover no-repeat;
+    background: url('/assets/img/hero-karate.jpg') center center/cover no-repeat;
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
     position: relative;
