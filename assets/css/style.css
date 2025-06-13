@@ -1,0 +1,49 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    background: url('/assets/img/hero-karate.jpg') center center/cover no-repeat;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header .container {
+    position: relative;
+    z-index: 2;
+    background: transparent;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* šiek tiek patamsins nuotrauką */
+    z-index: 1;
+}
+/* Subalansuoti tarpai tarp meniu punktų — universalus */
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* horizontalus tarpas */
+    text-align: center; /* jei ilgesnis tekstas */
+}
+
+/* Centruoti meniu ant platesnių ekranų */
+@media (min-width: 1200px) {
+    .navbar-collapse {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem;
+    }
+}
