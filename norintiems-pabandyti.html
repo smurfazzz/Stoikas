@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Norintiems pabandyti - Stoikas Karate Klubas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .hero-norintiems {
+            background: url('assets/img/hero-norintiems.jpg') center center/cover no-repeat;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-norintiems::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-norintiems .container {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Sticky Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas" style="height:40px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Pradžia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="kontaktai.html">Kontaktai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="treniruociu-adresai.html">Treniruotės adresai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="treniruociu-grafikai.html">Treniruotės grafikai</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="norintiems-pabandyti.html">Norintiems pabandyti</a></li>
+                    <li class="nav-item"><a class="nav-link" href="1-2proc-gpm-parama.html">1,2% GPM parama</a></li>
+                    <li class="nav-item"><a class="nav-link" href="egzaminu-technika.html">Egzaminų technika</a></li>
+                    <li class="nav-item"><a class="nav-link" href="remejai.html">Rėmėjai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="nsa-projektas.html">NSA projektas</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-norintiems">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Bandomoji treniruotė</h1>
+            <p class="lead mb-4">Kviečiame išbandyti karate treniruotę NEMOKAMAI!</p>
+            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <p class="lead text-center mb-4">Prašome užpildykite formą ir mes jus pakviesime į tinkamiausią treniruotę:</p>
+        <div class="text-center mb-4">
+            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis dabar</a>
+        </div>
+
+        <h3 class="mb-4 text-center">Karate klubas STOIKAS — verta prisijungti:</h3>
+        <ul class="list-unstyled fs-5">
+            <li>✅ Treniruotės Kaune ir Kėdainiuose</li>
+            <li>✅ Užsiėmimai 1-5 x sav. Kaune</li>
+            <li>✅ Užsiėmimai 1-3 x sav. Kėdainiuose</li>
+            <li>✅ Visos amžiaus grupės nuo 6 iki 55 metų</li>
+            <li>✅ Moderni treniruoklių salė sportininkams ir jų tėvams Kaune</li>
+            <li>✅ Savaitgalinės karate stovyklos 1 x mėnesį</li>
+            <li>✅ Klubinės varžybos 4 x metuose</li>
+            <li>✅ Karate diržų klubiniai egzaminai 2 x metuose</li>
+        </ul>
+
+        <p class="lead text-center mt-4 mb-4">Kviečiame registruotis NEMOKAMAI bandomajai karate treniruotei ir mes jus pakviesime į tinkamiausią grupę!</p>
+
+        <p class="text-center">Kviečiami visi nuo 6 iki 55 metų! Prašome užpildyti trumpą registracijos formą:</p>
+        <div class="text-center mb-5">
+            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
+        </div>
+
+        <p class="text-center fs-4">Susitikime treniruotėje! 👊🥋❤️💪</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Stoikas Karate Klubas. Visos teisės saugomos.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
