@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "puslapiai"
+    label: "Puslapiai"
+    files:
+      - label: "1,2% GPM parama"
+        name: "gpm"
+        file: "1-2proc-gpm-parama.html"
+        fields:
+          - { label: "Turinys", name: "body", widget: "markdown" }
+
+      - label: "Kontaktai"
+        name: "kontaktai"
+        file: "kontaktai.html"
+        fields:
+          - { label: "Turinys", name: "body", widget: "markdown" }
+
+      # Galima tęsti su visais kitais puslapiais...
