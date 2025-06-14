@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Stoikas Admin</title>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  </head>
-  <body>
-    <div id="cms"></div>
-  </body>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stoikas Admin</title>
+</head>
+<body>
+  <!-- Jeigu nori aiškiai matyti mount tašką, gali pridėti:
+  <div id="nc-root"></div>
+  ir žemiau nurodyti window.CMS_MANUAL_INIT, bet nebūtina -->
+  
+  <!-- 1) Netlify Identity widget turi būti pirmas -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+      // automatiškai paleidžiam Identity-ui
+      window.netlifyIdentity.init();
+    }
+  </script>
+
+  <!-- 2) Pagrindinis Netlify CMS skriptas turi krautis tik po to, kai Body jau yra -->
+  <script src="https://unpkg.com/netlify-cms@^2.15.72/dist/netlify-cms.js"></script>
+</body>
 </html>
