@@ -13,16 +13,16 @@ collections:
         name: "gpm"
         file: "1-2proc-gpm-parama.html"
         fields:
-          - { label: "Turinys", name: "body", widget: "markdown" }
+          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
 
       - label: "Kontaktai"
         name: "kontaktai"
         file: "kontaktai.html"
         fields:
-          - { label: "Turinys", name: "body", widget: "markdown" }
+          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
 
-      - label: "NSA projektas"
-        name: "nsa"
-        file: "nsa-projektas.html"
+      - label: "Treniruotės grafikai"
+        name: "grafikai"
+        file: "treniruociu-grafikai.html"
         fields:
-          - { label: "Turinys", name: "body", widget: "markdown" }
+          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
