@@ -51,7 +51,22 @@
     </div>
   </footer>
 
-  <!-- Identity widget (pagauna recovery/confirmation token bet kuriame puslapyje) -->
+  <!-- 1) Redirect ?recovery_token or ?confirmation_token to /admin/#… -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const recovery = params.get('recovery_token');
+      const confirm  = params.get('confirmation_token');
+      if (recovery) {
+        window.location.replace(`${window.location.origin}/admin/#recovery_token=${recovery}`);
+      }
+      if (confirm) {
+        window.location.replace(`${window.location.origin}/admin/#confirmation_token=${confirm}`);
+      }
+    })();
+  </script>
+
+  <!-- 2) Identity widget -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
     if (window.netlifyIdentity) {
