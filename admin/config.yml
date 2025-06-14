@@ -21,4 +21,8 @@ collections:
         fields:
           - { label: "Turinys", name: "body", widget: "markdown" }
 
-      # Galima tęsti su visais kitais puslapiais...
+      - label: "NSA projektas"
+        name: "nsa"
+        file: "nsa-projektas.html"
+        fields:
+          - { label: "Turinys", name: "body", widget: "markdown" }
