@@ -1,4 +1,4 @@
 ---
-hero_title: "Kyokushin karate klubas STOIKAS"
-hero_subtitle: "Išbandyk treniruotę nemokamai"
+hero_title: STOIKAS
+hero_subtitle: Išbandyk nemokamai
 ---
