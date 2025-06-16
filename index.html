@@ -58,16 +58,24 @@
 
   <!-- Dinaminio turinio įkėlimas -->
   <script>
-    fetch('content/index.md')
-      .then(res => res.text())
-      .then(md => {
-        const title = md.match(/hero_title:\s*"?(.+?)"?\s*$/m)?.[1] || "Karate";
-const subtitle = md.match(/hero_subtitle:\s*"?(.+?)"?\s*$/m)?.[1] || "";
+  fetch('content/index.md')
+    .then(res => res.text())
+    .then(md => {
+      const title = md.match(/hero_title:\s*"?(.+?)"?\s*$/m)?.[1] || '';
+      const subtitle = md.match(/hero_subtitle:\s*"?(.+?)"?\s*$/m)?.[1] || '';
+      const image = md.match(/hero_image:\s*"?(.+?)"?\s*$/m)?.[1] || '';
 
-        document.getElementById("hero-title").innerText = title;
-        document.getElementById("hero-subtitle").innerText = subtitle;
-      });
-  </script>
+      document.getElementById("hero-title").innerText = title;
+      document.getElementById("hero-subtitle").innerText = subtitle;
+
+      if (image) {
+        document.getElementById("hero-section").style.backgroundImage = `url(${image})`;
+        document.getElementById("hero-section").style.backgroundSize = 'cover';
+        document.getElementById("hero-section").style.backgroundPosition = 'center';
+      }
+    });
+</script>
+
 
 </body>
 
