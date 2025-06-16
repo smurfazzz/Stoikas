@@ -16,3 +16,4 @@ collections:
         fields:
           - { label: "Antraštė", name: "hero_title", widget: "string" }
           - { label: "Poantraštė", name: "hero_subtitle", widget: "string" }
+          - { label: "Hero paveikslėlis", name: "hero_image", widget: "image" }
