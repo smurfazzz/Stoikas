@@ -1,4 +1,4 @@
 ---
-hero_title: "Karatė klubas"
-hero_subtitle: "sportuok2"
+hero_title: Kyokushin karate klubas STOIKAS
+hero_subtitle: Išbandyk treniruotę nemokamai
 ---
