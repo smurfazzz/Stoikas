@@ -9,21 +9,11 @@ public_folder: "/assets/img"
 collections:
   - name: "puslapiai"
     label: "Puslapiai"
-    files:
-      - label: "1,2% GPM parama"
-        name: "gpm"
-        file: "1-2proc-gpm-parama.html"
-        fields:
-          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
-
-      - label: "Kontaktai"
-        name: "kontaktai"
-        file: "kontaktai.html"
-        fields:
-          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
-
-      - label: "Treniruotės grafikai"
-        name: "grafikai"
-        file: "treniruociu-grafikai.html"
-        fields:
-          - { label: "HTML turinys", name: "body", widget: "code", default_language: "html" }
+    folder: "content"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { label: "Pavadinimas", name: "title", widget: "string" }
+      - { label: "Hero Tekstas", name: "hero_text", widget: "string" }
+      - { label: "Hero Nuotrauka", name: "hero_image", widget: "image" }
+      - { label: "Pagrindinis tekstas", name: "body", widget: "markdown" }
