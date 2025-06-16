@@ -7,13 +7,12 @@ media_folder: "assets/img"
 public_folder: "/assets/img"
 
 collections:
-  - name: "puslapiai"
-    label: "Puslapiai"
-    folder: "content"
-    create: false
-    slug: "{{slug}}"
-    fields:
-      - { label: "Pavadinimas", name: "title", widget: "string" }
-      - { label: "Hero Tekstas", name: "hero_text", widget: "string" }
-      - { label: "Hero Nuotrauka", name: "hero_image", widget: "image" }
-      - { label: "Pagrindinis tekstas", name: "body", widget: "markdown" }
+  - name: "pradzia"
+    label: "Pagrindinis puslapis"
+    files:
+      - label: "Index"
+        name: "index"
+        file: "content/index.md"
+        fields:
+          - { label: "Antraštė", name: "hero_title", widget: "string" }
+          - { label: "Poantraštė", name: "hero_subtitle", widget: "string" }
