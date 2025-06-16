@@ -1,4 +1,4 @@
 ---
 hero_title: Karatė klubas
-hero_subtitle: sportuok
+hero_subtitle: sportuok2
 ---
