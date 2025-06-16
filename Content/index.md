@@ -1,6 +1,4 @@
 ---
-title: "Pagrindinis"
-hero_text: "Sveiki atvykę į Stoikas karate klubą!"
-hero_image: "/assets/img/hero.jpg"
-body: "Mūsų klubas kviečia visus nuo mažų iki didelių..."
+hero_title: "Kyokushin Karate klubas STOIKAS"
+hero_subtitle: "Išbandykite treniruotę NEMOKAMAI!"
 ---
