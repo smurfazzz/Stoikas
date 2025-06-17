@@ -17,7 +17,8 @@ collections:
           - { label: "Antraštė", name: "hero_title", widget: "string" }
           - { label: "Poantraštė", name: "hero_subtitle", widget: "string" }
           - { label: "Hero paveikslėlis", name: "hero_image", widget: "image" }
-            - name: "kontaktai"
+          
+    - name: "kontaktai"
     label: "Kontaktų puslapis"
     files:
       - label: "Kontaktai"
