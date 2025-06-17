@@ -17,3 +17,18 @@ collections:
           - { label: "Antraštė", name: "hero_title", widget: "string" }
           - { label: "Poantraštė", name: "hero_subtitle", widget: "string" }
           - { label: "Hero paveikslėlis", name: "hero_image", widget: "image" }
+            - name: "kontaktai"
+    label: "Kontaktų puslapis"
+    files:
+      - label: "Kontaktai"
+        name: "kontaktai"
+        file: "content/kontaktai.md"
+        fields:
+          - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
+          - { label: "Informacija Tel.", name: "informacija_tel", widget: "string" }
+          - { label: "Klubo vadovas", name: "vadovas", widget: "string" }
+          - { label: "Vadovo Tel.", name: "vadovo_tel", widget: "string" }
+          - { label: "El. paštas", name: "el_pastas", widget: "string" }
+          - { label: "Facebook puslapis", name: "facebook", widget: "string" }
+          - { label: "Stoiko grupė", name: "grupe", widget: "string" }
+
