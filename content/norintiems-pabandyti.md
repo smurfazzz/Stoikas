@@ -2,6 +2,7 @@
 puslapio_pavadinimas: Bandomoji treniruotė
 hero_intro: Kviečiame išbandyti karate treniruotę NEMOKAMAI!
 intro_tekstas: Karate klubas STOIKAS — verta prisijungti
+registracijos_nuoroda: https://forms.gle/fEt4561AaDkgoYC4A
 privalumai:
   - ✅ Treniruotės Kaune ir Kėdainiuose
   - ✅ Užsiėmimai 1-5 x sav. Kaune
