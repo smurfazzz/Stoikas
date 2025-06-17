@@ -65,24 +65,28 @@
           return match ? match[1] : '';
         };
 
-        const parseTable = (section) => {
-          const match = md.match(new RegExp(`${section}:[\s\S]*?(?=\n\w|$)`));
-          const rows = [];
-          if (match) {
-            const lines = match[0].split('\n').slice(1);
-            let current = [];
-            for (const l of lines) {
-              if (l.includes('cells:')) {
-                if (current.length) rows.push(current);
-                current = [];
-              } else if (l.includes('- cell:')) {
-                current.push(l.replace('- cell:', '').trim().replace(/"/g, ''));
-              }
-            }
-            if (current.length) rows.push(current);
-          }
-          return rows;
-        };
+const parseFrontmatter = (key) => {
+  const regex = new RegExp(`${key}:\\s*([\\s\\S]*?)(?=\\n\\w|\\n$)`, 'g');
+  const match = md.match(regex);
+  if (!match) return [];
+
+  const block = match[0].split('\n').slice(1); // Skip key
+  const rows = [];
+  let current = [];
+
+  for (const line of block) {
+    const clean = line.trim();
+    if (clean.startsWith('- cells:')) {
+      if (current.length) rows.push(current);
+      current = [];
+    } else if (clean.startsWith('-')) {
+      current.push(clean.replace(/^-/, '').trim().replace(/^["']|["']$/g, ''));
+    }
+  }
+  if (current.length) rows.push(current);
+  return rows;
+};
+;
 
         const buildTable = (rows) => {
           const headers = ["Treniruočių laikas", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis"];
