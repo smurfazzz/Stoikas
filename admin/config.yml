@@ -56,35 +56,12 @@ collections:
           - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
 
           - { label: "Kaunas: Antraštė", name: "kaunas_title", widget: "string" }
-          - { label: "Kaunas: Įžanga (raudonas tekstas)", name: "kaunas_intro", widget: "string" }
-          - label: "Kaunas: Lentelė"
-            name: "kaunas_lentele"
-            widget: "list"
-            label_singular: "Eilutė"
-            fields:
-              - label: "Langeliai"
-                name: "cells"
-                widget: "list"
-                field:
-                  label: "Langas"
-                  name: "cell"
-                  widget: "string"
-          - { label: "Kaunas: Legenda", name: "kaunas_legenda", widget: "text" }
-          - { label: "Kaunas: Pastaba po lentele (raudonas tekstas)", name: "grafikai_pastaba_kaunas", widget: "text" }
+          - { label: "Kaunas: Įžanga", name: "kaunas_intro", widget: "string" }
+          - { label: "Kaunas: Grafiko paveikslėlis", name: "kaunas_img", widget: "image" }
+          - { label: "Kaunas: Pastaba", name: "kaunas_note", widget: "text" }
 
           - { label: "Kėdainiai: Antraštė", name: "kedainiai_title", widget: "string" }
-          - { label: "Kėdainiai: Įžanga (raudonas tekstas)", name: "kedainiai_intro", widget: "string" }
-          - label: "Kėdainiai: Lentelė"
-            name: "kedainiai_lentele"
-            widget: "list"
-            label_singular: "Eilutė"
-            fields:
-              - label: "Langeliai"
-                name: "cells"
-                widget: "list"
-                field:
-                  label: "Langas"
-                  name: "cell"
-                  widget: "string"
-          - { label: "Kėdainiai: Pastaba po lentele (raudonas tekstas)", name: "grafikai_pastaba_kedainiai", widget: "text" }
+          - { label: "Kėdainiai: Įžanga", name: "kedainiai_intro", widget: "string" }
+          - { label: "Kėdainiai: Grafiko paveikslėlis", name: "kedainiai_img", widget: "image" }
+          - { label: "Kėdainiai: Pastaba", name: "kedainiai_note", widget: "text" }
 
