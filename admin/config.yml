@@ -78,11 +78,11 @@ collections:
           - { label: "Registracijos nuoroda", name: "registracijos_nuoroda", widget: "string" }
           - { label: "Įžangos tekstas", name: "intro_tekstas", widget: "string" }
           - {
-            label: "Klubo privalumai",
-            name: "privalumai",
-            widget: "list",
-            field: { label: "Punktas", name: "punktas", widget: "string" }
-          }
+              label: "Klubo privalumai",
+              name: "privalumai",
+              widget: "list",
+              field: { label: "Punktas", name: "punktas", widget: "string" }
+            }
         - { label: "Kvietimas", name: "kvietimas", widget: "text" }
         - { label: "Amžiaus grupė", name: "amziaus_grupe", widget: "string" }
         - { label: "Pabaigos tekstas", name: "pabaigos_tekstas", widget: "string" }
