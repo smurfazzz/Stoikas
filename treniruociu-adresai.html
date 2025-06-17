@@ -37,49 +37,85 @@
 
     <!-- Treniruočių adresai Section -->
    <main class="container py-5">
-  <h1 id="adresu-pavadinimas" class="display-4 text-center mb-5">Treniruočių adresai</h1>
-  <div class="row g-4">
-    <!-- Kaunas -->
-    <div class="col-lg-6">
-      <div class="card h-100 shadow-sm">
-        <iframe id="kaunas-map" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
-        <div class="card-body">
-          <h5 class="card-title">Kaunas</h5>
-          <p id="kaunas-aprasymas" class="card-text"></p>
-        </div>
-      </div>
-    </div>
-    <!-- Kėdainiai -->
-    <div class="col-lg-6">
-      <div class="card h-100 shadow-sm">
-        <iframe id="kedainiai-map" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
-        <div class="card-body">
-          <h5 class="card-title">Kėdainiai</h5>
-          <p id="kedainiai-aprasymas" class="card-text"></p>
-        </div>
-      </div>
-    </div>
+  <h1 id="grafiku-pavadinimas" class="display-4 text-center mb-5"></h1>
+
+  <!-- Kaunas -->
+  <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
+  <p id="kaunas-intro"></p>
+  <div class="table-responsive">
+    <table class="table table-bordered text-center" id="kaunas-lentele">
+      <!-- JS sugeneruos -->
+    </table>
   </div>
+  <p id="kaunas-footer" class="mt-2"></p>
+  <p id="kaunas-extra" class="mt-2"></p>
+
+  <hr class="my-5">
+
+  <!-- Kėdainiai -->
+  <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
+  <p id="kedainiai-intro"></p>
+  <div class="table-responsive">
+    <table class="table table-bordered text-center" id="kedainiai-lentele">
+      <!-- JS sugeneruos -->
+    </table>
+  </div>
+  <p id="kedainiai-extra" class="mt-2"></p>
 </main>
 
+
  <script>
-  fetch('content/treniruociu-adresai.md')
+  fetch('content/treniruociu-grafikai.md')
     .then(res => res.text())
     .then(md => {
-      const g = (key) => md.match(new RegExp(`${key}:\\s*"?(.+?)"?\\s*$`, 'm'))?.[1] || '';
-      
-      document.getElementById("adresu-pavadinimas").innerText = g("puslapio_pavadinimas");
+      const get = (key) => {
+        const match = md.match(new RegExp(`${key}:\\s*` + '(\\[.*?\\]|".*?"|.*?)\\s*$', 'm'));
+        return match ? match[1].trim() : '';
+      };
 
-      const kaunas = g("kaunas_adresas");
-      const kedainiai = g("kedainiai_adresas");
+      const decodeYamlList = (key) => {
+        const regex = new RegExp(`${key}:\\s*((?:\\s+-\\s+\\[.*\\])+)+`, 'm');
+        const block = md.match(regex)?.[1];
+        if (!block) return [];
+        return [...block.matchAll(/-\s+\[(.*?)\]/g)].map(row =>
+          row[1].split(/",\s*"?|",\s*|",|",\s*|\s*,\s*/g).map(cell => cell.replace(/^"|"$/g, '').trim())
+        );
+      };
 
-      document.getElementById("kaunas-map").src = `https://www.google.com/maps?q=${encodeURIComponent(kaunas)}&output=embed`;
-      document.getElementById("kaunas-aprasymas").innerText = g("kaunas_aprasymas");
+      const markdownToHTML = (text) =>
+        text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
-      document.getElementById("kedainiai-map").src = `https://www.google.com/maps?q=${encodeURIComponent(kedainiai)}&output=embed`;
-      document.getElementById("kedainiai-aprasymas").innerText = g("kedainiai_aprasymas");
+      document.getElementById("grafiku-pavadinimas").innerText = get("puslapio_pavadinimas");
+      document.getElementById("kaunas-intro").innerText = get("kaunas_intro");
+      document.getElementById("kaunas-footer").innerHTML = markdownToHTML(get("kaunas_footer"));
+      document.getElementById("kaunas-extra").innerText = get("kaunas_extra");
+      document.getElementById("kedainiai-intro").innerText = get("kedainiai_intro");
+      document.getElementById("kedainiai-extra").innerText = get("kedainiai_extra");
+
+      const createTable = (data, id) => {
+        const table = document.getElementById(id);
+        table.innerHTML = '';
+        const head = table.insertRow();
+        ["Treniruočių laikas", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis"].forEach(text => {
+          const th = document.createElement("th");
+          th.className = "table-light";
+          th.innerText = text;
+          head.appendChild(th);
+        });
+        data.forEach(rowData => {
+          const row = table.insertRow();
+          rowData.forEach(cell => {
+            const td = row.insertCell();
+            td.innerHTML = cell;
+          });
+        });
+      };
+
+      createTable(decodeYamlList("kaunas_lentele"), "kaunas-lentele");
+      createTable(decodeYamlList("kedainiai_lentele"), "kedainiai-lentele");
     });
 </script>
+
    
 
     <!-- Footer -->
