@@ -97,45 +97,59 @@
 
   <script>
     fetch('/content/norintiems-pabandyti.md')
-      .then(res => res.text())
-      .then(md => {
-        const extractField = (key) => {
-          const regex = new RegExp(`${key}\\s*:\\s*(\\|)?\\s*(.*?)(?=\\n\\w|\\n$)`, 's');
-          const match = md.match(regex);
-          if (!match) return '';
-          const isBlock = match[1] === '|';
-          if (isBlock) {
-            return match[2].split('\n').map(l => l.replace(/^\s*/, '')).join('\n').trim();
-          }
-          return match[2].trim();
-        };
+        .then(res => res.text())
+        .then(md => {
+            function extractField(md, key) {
+                const lines = md.split('\n');
+                const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
+                if (startIndex === -1) return '';
 
-        document.getElementById("hero_title").innerText = extractField("hero_title");
-        document.getElementById("hero_subtitle").innerText = extractField("hero_subtitle");
+                const valueLine = lines[startIndex].slice((key + ':').length).trim();
 
-        const regUrl = extractField("registration_url");
-        ["hero_btn", "register_btn_2", "register_btn_3"].forEach(id => {
-          document.getElementById(id).href = regUrl;
+                // Vienos eilutės atvejis
+                if (valueLine && !valueLine.startsWith('|')) {
+                    return valueLine.replace(/^"|"$/g, '');
+                }
+
+                // Blokinis tekstas
+                const result = [];
+                for (let i = startIndex + 1; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (/^\S/.test(line)) break; // naujas raktas
+                    result.push(line.trimStart());
+                }
+
+                return result.join('\n');
+            }
+
+            document.getElementById("hero_title").innerText = extractField(md, "hero_title");
+            document.getElementById("hero_subtitle").innerText = extractField(md, "hero_subtitle");
+
+            const url = extractField(md, "registration_url");
+            document.getElementById("hero_btn").href = url;
+            document.getElementById("register_btn_2").href = url;
+            document.getElementById("register_btn_3").href = url;
+
+            document.getElementById("intro_text").innerText = extractField(md, "intro_text");
+
+            // Privalumų sąrašas (benefits)
+            const benefitsRaw = extractField(md, "benefits");
+            const benefitsList = document.getElementById("benefits_list");
+            benefitsList.innerHTML = '';
+            benefitsRaw.split('\n').forEach(line => {
+                if (line.trim()) {
+                    const li = document.createElement('li');
+                    li.textContent = line.replace(/^[-*+]\s*/, '').trim(); // Pašalina simbolius kaip "- " ar "* "
+                    benefitsList.appendChild(li);
+                }
+            });
+
+            document.getElementById("after_benefits").innerText = extractField(md, "after_benefits");
+            document.getElementById("final_reminder").innerText = extractField(md, "final_reminder");
+            document.getElementById("closing_line").innerText = extractField(md, "closing_line");
         });
+</script>
 
-        document.getElementById("intro_text").innerText = extractField("intro_text");
-
-        const benefits = extractField("benefits");
-        const benefitsList = document.getElementById("benefits_list");
-        benefitsList.innerHTML = "";
-        benefits.split('\n').forEach(line => {
-          if (line.trim()) {
-            const li = document.createElement("li");
-            li.innerText = "✅ " + line.trim();
-            benefitsList.appendChild(li);
-          }
-        });
-
-        document.getElementById("after_benefits").innerText = extractField("after_benefits");
-        document.getElementById("final_reminder").innerText = extractField("final_reminder");
-        document.getElementById("closing_line").innerText = extractField("closing_line");
-      });
-  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
