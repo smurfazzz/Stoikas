@@ -74,12 +74,11 @@
     .then(res => res.text())
     .then(md => {
   const extractField = (key) => {
-  const regex = new RegExp(`${key}:\\s*\\|\\s*\\n([\\s\\S]+?)(?=\\n\\w|\\n---|$)`, 'm');
+  const regex = new RegExp(`${key}:\\s*(.*(?:\\n  .*)*)`);
   const match = md.match(regex);
-  if (match) return match[1].trim();
-  const fallback = md.match(new RegExp(`${key}:\\s*(.+)`));
-  return fallback ? fallback[1].trim().replace(/^"|"$/g, '') : '';
+  return match ? match[1].trim() : '';
 };
+
 
 
       document.getElementById("puslapio_pavadinimas").innerText = extractField("puslapio_pavadinimas");
