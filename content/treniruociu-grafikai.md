@@ -1,6 +1,6 @@
 ---
-puslapio_pavadinimas: GRAFIKAI
-kaunas_intro: ","
+puslapio_pavadinimas: GRAFIKAI.
+kaunas_intro: ",.........."
 kaunas_lentele:
   - cells:
       - pirmas langas
