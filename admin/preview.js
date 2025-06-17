@@ -12,16 +12,18 @@ function renderTable(rows) {
     "Penktadienis"
   ];
 
-  let html = '<table class="table table-bordered text-center">';
-  html += '<thead class="table-light"><tr>' + headers.map(h => `<th>${h}</th>`).join("") + '</tr></thead>';
-  html += '<tbody>';
-
-  rows.forEach(row => {
-    html += '<tr>' + row.map(cell => `<td>${cell || ""}</td>`).join("") + '</tr>';
-  });
-
-  html += '</tbody></table>';
-  return html;
+  return `
+    <table class="table table-bordered text-center">
+      <thead class="table-light">
+        <tr>${headers.map(h => `<th>${h}</th>`).join("")}</tr>
+      </thead>
+      <tbody>
+        ${rows.map(row => `
+          <tr>${row.map(cell => `<td>${cell || ""}</td>`).join("")}</tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
 }
 
 const TreniruočiųGrafikaiPreview = ({ entry }) => {
@@ -30,24 +32,26 @@ const TreniruočiųGrafikaiPreview = ({ entry }) => {
   const kaunasLentele = (data.kaunas_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
   const kedainiaiLentele = (data.kedainiai_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
 
-  return `
-    <main class="container py-5">
-      <h1 class="display-4 text-center mb-5">${data.puslapio_pavadinimas || ""}</h1>
+  const container = document.createElement("div");
+  container.className = "container py-5";
+  container.innerHTML = `
+    <h1 class="display-4 text-center mb-5">${data.puslapio_pavadinimas || ""}</h1>
 
-      <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
-      <p>${data.kaunas_intro || ""}</p>
-      <div class="table-responsive">${renderTable(kaunasLentele)}</div>
-      <p>${data.kaunas_footer || ""}</p>
-      <p>${data.kaunas_extra || ""}</p>
+    <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
+    <p>${data.kaunas_intro || ""}</p>
+    <div class="table-responsive">${renderTable(kaunasLentele)}</div>
+    <p>${data.kaunas_footer || ""}</p>
+    <p>${data.kaunas_extra || ""}</p>
 
-      <hr class="my-5">
+    <hr class="my-5">
 
-      <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
-      <p>${data.kedainiai_intro || ""}</p>
-      <div class="table-responsive">${renderTable(kedainiaiLentele)}</div>
-      <p>${data.kedainiai_extra || ""}</p>
-    </main>
+    <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
+    <p>${data.kedainiai_intro || ""}</p>
+    <div class="table-responsive">${renderTable(kedainiaiLentele)}</div>
+    <p>${data.kedainiai_extra || ""}</p>
   `;
+
+  return container;
 };
 
 CMS.registerPreviewTemplate("grafikai", TreniruočiųGrafikaiPreview);
