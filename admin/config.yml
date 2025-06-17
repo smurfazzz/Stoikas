@@ -67,17 +67,17 @@ collections:
           - { label: "Kėdainiai: Pastaba", name: "kedainiai_note", widget: "string" }
 
   - name: "norintiems_pabandyti"
-  label: "Norintiems pabandyti"
-  files:
-    - label: "Norintiems pabandyti"
-      name: "norintiems_pabandyti"
-      file: "content/norintiems-pabandyti.md"
-      fields:
-        - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
-        - { label: "Hero įžanga", name: "hero_intro", widget: "string" }
-        - { label: "Registracijos nuoroda", name: "registracijos_nuoroda", widget: "string" }
-        - { label: "Įžangos tekstas", name: "intro_tekstas", widget: "string" }
-        - {
+    label: "Norintiems pabandyti"
+    files:
+      - label: "Norintiems pabandyti"
+        name: "norintiems_pabandyti"
+        file: "content/norintiems-pabandyti.md"
+        fields:
+          - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
+          - { label: "Hero įžanga", name: "hero_intro", widget: "string" }
+          - { label: "Registracijos nuoroda", name: "registracijos_nuoroda", widget: "string" }
+          - { label: "Įžangos tekstas", name: "intro_tekstas", widget: "string" }
+          - {
             label: "Klubo privalumai",
             name: "privalumai",
             widget: "list",
