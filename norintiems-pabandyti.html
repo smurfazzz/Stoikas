@@ -36,11 +36,10 @@
             z-index: 2;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
-
-    <!-- Sticky Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas" style="height:40px;"></a>
@@ -64,50 +63,72 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <header class="hero-norintiems">
         <div class="container">
-            <h1 class="display-4 fw-bold">Bandomoji treniruotė</h1>
-            <p class="lead mb-4">Kviečiame išbandyti karate treniruotę NEMOKAMAI!</p>
-            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
+            <h1 id="hero_title" class="display-4 fw-bold"></h1>
+            <p id="hero_subtitle" class="lead mb-4"></p>
+            <a id="hero_btn" href="#" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="container py-5">
-        <p class="lead text-center mb-4">Prašome užpildykite formą ir mes jus pakviesime į tinkamiausią treniruotę:</p>
+        <p id="intro_text" class="lead text-center mb-4"></p>
         <div class="text-center mb-4">
-            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis dabar</a>
+            <a id="register_btn_2" href="#" target="_blank" class="btn btn-danger btn-lg">Registruotis dabar</a>
         </div>
 
         <h3 class="mb-4 text-center">Karate klubas STOIKAS — verta prisijungti:</h3>
-        <ul class="list-unstyled fs-5">
-            <li>✅ Treniruotės Kaune ir Kėdainiuose</li>
-            <li>✅ Užsiėmimai 1-5 x sav. Kaune</li>
-            <li>✅ Užsiėmimai 1-3 x sav. Kėdainiuose</li>
-            <li>✅ Visos amžiaus grupės nuo 6 iki 55 metų</li>
-            <li>✅ Moderni treniruoklių salė sportininkams ir jų tėvams Kaune</li>
-            <li>✅ Savaitgalinės karate stovyklos 1 x mėnesį</li>
-            <li>✅ Klubinės varžybos 4 x metuose</li>
-            <li>✅ Karate diržų klubiniai egzaminai 2 x metuose</li>
-        </ul>
+        <ul id="benefits_list" class="list-unstyled fs-5"></ul>
 
-        <p class="lead text-center mt-4 mb-4">Kviečiame registruotis NEMOKAMAI bandomajai karate treniruotei ir mes jus pakviesime į tinkamiausią grupę!</p>
-
-        <p class="text-center">Kviečiami visi nuo 6 iki 55 metų! Prašome užpildyti trumpą registracijos formą:</p>
+        <p id="after_benefits" class="lead text-center mt-4 mb-4"></p>
+        <p id="final_reminder" class="text-center"></p>
         <div class="text-center mb-5">
-            <a href="https://forms.gle/fEt4561AaDkgoYC4A" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
+            <a id="register_btn_3" href="#" target="_blank" class="btn btn-danger btn-lg">Registruotis į treniruotę</a>
         </div>
 
-        <p class="text-center fs-4">Susitikime treniruotėje! 👊🥋❤️💪</p>
+        <p id="closing_line" class="text-center fs-4"></p>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
             <p class="mb-0">&copy; 2025 Stoikas Karate Klubas. Visos teisės saugomos.</p>
         </div>
     </footer>
+
+    <script>
+        fetch('/content/norintiems-pabandyti.md')
+            .then(res => res.text())
+            .then(md => {
+                const extractField = key => {
+                    const regex = new RegExp(`${key}\s*:\s*(.*)`);
+                    const match = md.match(regex);
+                    return match ? match[1].trim().replace(/^"|"$/g, '') : '';
+                };
+
+                document.getElementById("hero_title").innerText = extractField("hero_title");
+                document.getElementById("hero_subtitle").innerText = extractField("hero_subtitle");
+                const url = extractField("registration_url");
+                document.getElementById("hero_btn").href = url;
+                document.getElementById("register_btn_2").href = url;
+                document.getElementById("register_btn_3").href = url;
+                document.getElementById("intro_text").innerText = extractField("intro_text");
+
+                const benefitsRaw = extractField("benefits");
+                const benefitsList = document.getElementById("benefits_list");
+                benefitsList.innerHTML = '';
+                benefitsRaw.split(';').forEach(line => {
+                    if (line.trim()) {
+                        const li = document.createElement('li');
+                        li.textContent = line.trim();
+                        benefitsList.appendChild(li);
+                    }
+                });
+
+                document.getElementById("after_benefits").innerText = extractField("after_benefits");
+                document.getElementById("final_reminder").innerText = extractField("final_reminder");
+                document.getElementById("closing_line").innerText = extractField("closing_line");
+            });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
