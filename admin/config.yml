@@ -55,28 +55,31 @@ collections:
         fields:
           - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
 
-          - { label: "Kaunas: Įžanga", name: "kaunas_intro", widget: "string" }
           - label: "Kaunas: Lentelė"
-            name: "kaunas_lentele"
-            widget: "list"
-            field:
-              label: "Eilutė"
-              name: "row"
-              widget: "list"
-              field: { label: "Langas", name: "cell", widget: "string" }
-          - { label: "Kaunas: Paaiškinimai po lentele", name: "kaunas_footer", widget: "markdown" }
-          - { label: "Kaunas: Papildomas tekstas", name: "kaunas_extra", widget: "text" }
+  name: "kaunas_lentele"
+  widget: "list"
+  label_singular: "Eilutė"
+  fields:
+    - label: "Langeliai"
+      name: "cells"
+      widget: "list"
+      field:
+        label: "Langas"
+        name: "cell"
+        widget: "string"
 
-          - { label: "Kėdainiai: Įžanga", name: "kedainiai_intro", widget: "string" }
-          - label: "Kėdainiai: Lentelė"
-            name: "kedainiai_lentele"
-            widget: "list"
-            field:
-              label: "Eilutė"
-              name: "row"
-              widget: "list"
-              field: { label: "Langas", name: "cell", widget: "string" }
-          - { label: "Kėdainiai: Papildomas tekstas", name: "kedainiai_extra", widget: "text" }
+- label: "Kėdainiai: Lentelė"
+  name: "kedainiai_lentele"
+  widget: "list"
+  label_singular: "Eilutė"
+  fields:
+    - label: "Langeliai"
+      name: "cells"
+      widget: "list"
+      field:
+        label: "Langas"
+        name: "cell"
+        widget: "string"
 
 
 
