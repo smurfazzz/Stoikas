@@ -1,131 +1,25 @@
-<!DOCTYPE html>
-<html lang="lt">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Treniruočių adresai - Stoikas Karate Klubas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-
-    <!-- Sticky Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas" style="height:40px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Pradžia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="kontaktai.html">Kontaktai</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="treniruociu-adresai.html">Treniruotės adresai</a></li>
-                    <li class="nav-item"><a class="nav-link" href="treniruociu-grafikai.html">Treniruotės grafikai</a></li>
-                    <li class="nav-item"><a class="nav-link" href="norintiems-pabandyti.html">Norintiems pabandyti</a></li>
-                    <li class="nav-item"><a class="nav-link" href="1-2proc-gpm-parama.html">1,2% GPM parama</a></li>
-                    <li class="nav-item"><a class="nav-link" href="egzaminu-technika.html">Egzaminų technika</a></li>
-                    <li class="nav-item"><a class="nav-link" href="remejai.html">Rėmėjai</a></li>
-                    <li class="nav-item"><a class="nav-link" href="nsa-projektas.html">NSA projektas</a></li>
-                </ul>
-            </div>
+<main class="container py-5">
+  <h1 id="adresu-pavadinimas" class="display-4 text-center mb-5">Treniruočių adresai</h1>
+  <div class="row g-4">
+    <!-- Kaunas -->
+    <div class="col-lg-6">
+      <div class="card h-100 shadow-sm">
+        <iframe id="kaunas-map" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        <div class="card-body">
+          <h5 class="card-title">Kaunas</h5>
+          <p id="kaunas-aprasymas" class="card-text"></p>
         </div>
-    </nav>
-
-    <!-- Treniruočių adresai Section -->
-   <main class="container py-5">
-  <h1 id="grafiku-pavadinimas" class="display-4 text-center mb-5"></h1>
-
-  <!-- Kaunas -->
-  <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
-  <p id="kaunas-intro"></p>
-  <div class="table-responsive">
-    <table class="table table-bordered text-center" id="kaunas-lentele">
-      <!-- JS sugeneruos -->
-    </table>
+      </div>
+    </div>
+    <!-- Kėdainiai -->
+    <div class="col-lg-6">
+      <div class="card h-100 shadow-sm">
+        <iframe id="kedainiai-map" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        <div class="card-body">
+          <h5 class="card-title">Kėdainiai</h5>
+          <p id="kedainiai-aprasymas" class="card-text"></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p id="kaunas-footer" class="mt-2"></p>
-  <p id="kaunas-extra" class="mt-2"></p>
-
-  <hr class="my-5">
-
-  <!-- Kėdainiai -->
-  <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
-  <p id="kedainiai-intro"></p>
-  <div class="table-responsive">
-    <table class="table table-bordered text-center" id="kedainiai-lentele">
-      <!-- JS sugeneruos -->
-    </table>
-  </div>
-  <p id="kedainiai-extra" class="mt-2"></p>
 </main>
-
-
- <script>
-  fetch('content/treniruociu-grafikai.md')
-    .then(res => res.text())
-    .then(md => {
-      const get = (key) => {
-        const match = md.match(new RegExp(`${key}:\\s*` + '(\\[.*?\\]|".*?"|.*?)\\s*$', 'm'));
-        return match ? match[1].trim() : '';
-      };
-
-      const decodeYamlList = (key) => {
-        const regex = new RegExp(`${key}:\\s*((?:\\s+-\\s+\\[.*\\])+)+`, 'm');
-        const block = md.match(regex)?.[1];
-        if (!block) return [];
-        return [...block.matchAll(/-\s+\[(.*?)\]/g)].map(row =>
-          row[1].split(/",\s*"?|",\s*|",|",\s*|\s*,\s*/g).map(cell => cell.replace(/^"|"$/g, '').trim())
-        );
-      };
-
-      const markdownToHTML = (text) =>
-        text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-      document.getElementById("grafiku-pavadinimas").innerText = get("puslapio_pavadinimas");
-      document.getElementById("kaunas-intro").innerText = get("kaunas_intro");
-      document.getElementById("kaunas-footer").innerHTML = markdownToHTML(get("kaunas_footer"));
-      document.getElementById("kaunas-extra").innerText = get("kaunas_extra");
-      document.getElementById("kedainiai-intro").innerText = get("kedainiai_intro");
-      document.getElementById("kedainiai-extra").innerText = get("kedainiai_extra");
-
-      const createTable = (data, id) => {
-        const table = document.getElementById(id);
-        table.innerHTML = '';
-        const head = table.insertRow();
-        ["Treniruočių laikas", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis"].forEach(text => {
-          const th = document.createElement("th");
-          th.className = "table-light";
-          th.innerText = text;
-          head.appendChild(th);
-        });
-        data.forEach(rowData => {
-          const row = table.insertRow();
-          rowData.forEach(cell => {
-            const td = row.insertCell();
-            td.innerHTML = cell;
-          });
-        });
-      };
-
-      createTable(decodeYamlList("kaunas_lentele"), "kaunas-lentele");
-      createTable(decodeYamlList("kedainiai_lentele"), "kedainiai-lentele");
-    });
-</script>
-
-   
-
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Stoikas Karate Klubas. Visos teisės saugomos.</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
