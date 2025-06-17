@@ -12,8 +12,7 @@ privalumai:
   - ✅ Savaitgalinės karate stovyklos 1 x mėnesį
   - ✅ Klubinės varžybos 4 x metuose
   - ✅ Karate diržų klubiniai egzaminai 2 x metuose
-kvietimas: Kviečiame registruotis NEMOKAMAI bandomajai karate treniruotei ir mes
-  jus pakviesime į tinkamiausią grupę!
+kvietimas: Kviečiame registruotis NEMOKAMAI bandomajai karate treniruotei
 amziaus_grupe: Kviečiami visi nuo 6 iki 55 metų! Prašome užpildyti trumpą registracijos formą
 pabaigos_tekstas: Susitikime treniruotėje! 👊🥋❤️💪
 ---
