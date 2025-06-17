@@ -29,8 +29,8 @@ function renderTable(rows) {
 const TreniruočiųGrafikaiPreview = ({ entry }) => {
   const data = entry.get("data").toJS();
 
-  const kaunasLentele = (data.kaunas_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
-  const kedainiaiLentele = (data.kedainiai_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
+  const kaunasLentele = (data.kaunas_lentele || []).map(row => (row.cells || []).map(c => c.cell));
+  const kedainiaiLentele = (data.kedainiai_lentele || []).map(row => (row.cells || []).map(c => c.cell));
 
   const container = document.createElement("div");
   container.className = "container py-5";
@@ -38,17 +38,12 @@ const TreniruočiųGrafikaiPreview = ({ entry }) => {
     <h1 class="display-4 text-center mb-5">${data.puslapio_pavadinimas || ""}</h1>
 
     <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
-    <p>${data.kaunas_intro || ""}</p>
     <div class="table-responsive">${renderTable(kaunasLentele)}</div>
-    <p>${data.kaunas_footer || ""}</p>
-    <p>${data.kaunas_extra || ""}</p>
 
     <hr class="my-5">
 
     <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
-    <p>${data.kedainiai_intro || ""}</p>
     <div class="table-responsive">${renderTable(kedainiaiLentele)}</div>
-    <p>${data.kedainiai_extra || ""}</p>
   `;
 
   return container;
