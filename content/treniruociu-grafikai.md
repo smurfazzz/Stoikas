@@ -7,7 +7,7 @@ kaunas_note: |
   * **PR** – pradinis lygis
   * **VD** – vidurinis lygis
   * **P** – pažengusiųjų lygis
-kaunas_note_2:|
+kaunas_note_2: |
 "* Treniruočių amžiaus grupės yra preliminarios – atsižvelgę į
   sportininko fizinį ir techninį pasiruošimą treneriai rekomenduoja tinkamiausią
   grupę.."
