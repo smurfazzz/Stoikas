@@ -106,49 +106,51 @@
 
                 const valueLine = lines[startIndex].slice((key + ':').length).trim();
 
-                // Vienos eilutės atvejis
-                if (valueLine && !valueLine.startsWith('|')) {
+                if (valueLine && !valueLine.startsWith('|') && !valueLine.startsWith('-')) {
                     return valueLine.replace(/^"|"$/g, '');
                 }
 
-                // Blokinis tekstas
                 const result = [];
                 for (let i = startIndex + 1; i < lines.length; i++) {
                     const line = lines[i];
                     if (/^\S/.test(line)) break; // naujas raktas
-                    result.push(line.trimStart());
+                    if (line.trimStart().startsWith('-')) {
+                        result.push(line.trimStart().replace(/^[-*+]\s*/, ''));
+                    } else {
+                        result.push(line.trimStart());
+                    }
                 }
 
                 return result.join('\n');
             }
 
-            document.getElementById("hero_title").innerText = extractField(md, "hero_title");
-            document.getElementById("hero_subtitle").innerText = extractField(md, "hero_subtitle");
+            document.getElementById("hero_title").innerText = extractField(md, "puslapio_pavadinimas");
+            document.getElementById("hero_subtitle").innerText = extractField(md, "hero_intro");
 
-            const url = extractField(md, "registration_url");
+            const url = extractField(md, "registracijos_nuoroda");
             document.getElementById("hero_btn").href = url;
             document.getElementById("register_btn_2").href = url;
             document.getElementById("register_btn_3").href = url;
 
-            document.getElementById("intro_text").innerText = extractField(md, "intro_text");
+            document.getElementById("intro_text").innerText = extractField(md, "intro_tekstas");
 
-            // Privalumų sąrašas (benefits)
-            const benefitsRaw = extractField(md, "benefits");
+            const benefitsRaw = extractField(md, "privalumai");
             const benefitsList = document.getElementById("benefits_list");
             benefitsList.innerHTML = '';
             benefitsRaw.split('\n').forEach(line => {
                 if (line.trim()) {
                     const li = document.createElement('li');
-                    li.textContent = line.replace(/^[-*+]\s*/, '').trim(); // Pašalina simbolius kaip "- " ar "* "
+                    li.textContent = line.trim();
                     benefitsList.appendChild(li);
                 }
             });
 
-            document.getElementById("after_benefits").innerText = extractField(md, "after_benefits");
-            document.getElementById("final_reminder").innerText = extractField(md, "final_reminder");
-            document.getElementById("closing_line").innerText = extractField(md, "closing_line");
+            document.getElementById("after_benefits").innerText = extractField(md, "kvietimas");
+            document.getElementById("final_reminder").innerText = extractField(md, "amziaus_grupe");
+            document.getElementById("closing_line").innerText = extractField(md, "pabaigos_tekstas");
         });
 </script>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
