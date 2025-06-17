@@ -73,15 +73,14 @@
   fetch('/content/treniruociu-grafikai.md')
     .then(res => res.text())
     .then(md => {
-      const extractField = (key) => {
-  const regex = new RegExp(`${key}\\s*:\\s*(\\|\\s*\\n([\\s\\S]*?))(?=\\n\\w|\\n---|$)|${key}\\s*:\\s*"?([^\\n"]*)"?`, 'm');
+  const extractField = (key) => {
+  const regex = new RegExp(`${key}:\\s*\\|\\s*\\n([\\s\\S]+?)(?=\\n\\w|\\n---|$)`, 'm');
   const match = md.match(regex);
-  if (match) {
-    if (match[2]) return match[2].trim(); // daugiaeilis
-    if (match[3]) return match[3].trim(); // vienaeilis
-  }
-  return '';
+  if (match) return match[1].trim();
+  const fallback = md.match(new RegExp(`${key}:\\s*(.+)`));
+  return fallback ? fallback[1].trim().replace(/^"|"$/g, '') : '';
 };
+
 
       document.getElementById("puslapio_pavadinimas").innerText = extractField("puslapio_pavadinimas");
       document.getElementById("kaunas_title").innerText = extractField("kaunas_title");
