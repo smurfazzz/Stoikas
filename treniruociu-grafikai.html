@@ -10,26 +10,19 @@
 </head>
 
 <body>
-
-    <!-- Sticky Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas"
-                    style="height:40px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas" style="height:40px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Pradžia</a></li>
                     <li class="nav-item"><a class="nav-link" href="kontaktai.html">Kontaktai</a></li>
-                    <li class="nav-item"><a class="nav-link" href="treniruociu-adresai.html">Treniruotės adresai</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link active" href="treniruociu-grafikai.html">Treniruotės
-                            grafikai</a></li>
-                    <li class="nav-item"><a class="nav-link" href="norintiems-pabandyti.html">Norintiems pabandyti</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="treniruociu-adresai.html">Treniruotės adresai</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="treniruociu-grafikai.html">Treniruotės grafikai</a></li>
+                    <li class="nav-item"><a class="nav-link" href="norintiems-pabandyti.html">Norintiems pabandyti</a></li>
                     <li class="nav-item"><a class="nav-link" href="1-2proc-gpm-parama.html">1,2% GPM parama</a></li>
                     <li class="nav-item"><a class="nav-link" href="egzaminu-technika.html">Egzaminų technika</a></li>
                     <li class="nav-item"><a class="nav-link" href="remejai.html">Rėmėjai</a></li>
@@ -39,109 +32,22 @@
         </div>
     </nav>
 
-    <!-- Treniruočių grafikai Section -->
     <main class="container py-5">
         <h1 class="display-4 text-center mb-5">Treniruočių grafikai</h1>
 
         <!-- Kaunas -->
         <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
-        <p><strong>Grafikai galioja nuo 2024.09.04 dienos</strong></p>
-        <div class="table-responsive">
-            <table class="table table-bordered text-center">
-                <thead class="table-light">
-                    <tr>
-                        <th>Treniruočių laikas</th>
-                        <th>Pirmadienis</th>
-                        <th>Antradienis</th>
-                        <th>Trečiadienis</th>
-                        <th>Ketvirtadienis</th>
-                        <th>Penktadienis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>17.30-18.30</td>
-                        <td>6-10 m. <br> PR</td>
-                        <td>6-10 m. <br> VD, PŽ</td>
-                        <td>6-10 m. <br> PR</td>
-                        <td>6-10 m. <br> VD, PŽ</td>
-                        <td>6-12 m. <br> Apjungtos</td>
-                    </tr>
-                    <tr>
-                        <td>18.30-19.30</td>
-                        <td>10-14 m.</td>
-                        <td>14-19 m.</td>
-                        <td>10-14 m.</td>
-                        <td>14-19 m.</td>
-                        <td>13+ m. <br> Apjungtos</td>
-                    </tr>
-                    <tr>
-                        <td>19.30-20.45</td>
-                        <td>20+<br>PŽ</td>
-                        <td>20+<br>PR, VD</td>
-                        <td>20+<br>PŽ</td>
-                        <td>20+<br>PR, VD</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <p><strong>PR</strong> - pradinis lygis,&nbsp; <strong>VD</strong> - vidurinis lygis,&nbsp; <strong>PŽ</strong>
-            - pažengusiųjų lygis</p>
-        <p>* Treniruočių amžiaus grupės yra preliminarios: atsižvelgę į sportininko fizinį ir techninį pasiruošimą
-            treneriai rekomenduoja tinkamiausią grupę.</p>
+        <div id="kauno-lentele" class="table-responsive"></div>
 
         <hr class="my-5">
 
         <!-- Kėdainiai -->
         <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
-        <p><strong>Grafikai galioja nuo 2024.09.04 dienos</strong></p>
-        <div class="table-responsive">
-            <table class="table table-bordered text-center">
-                <thead class="table-light">
-                    <tr>
-                        <th>Treniruočių laikas</th>
-                        <th>Pirmadienis</th>
-                        <th>Antradienis</th>
-                        <th>Trečiadienis</th>
-                        <th>Ketvirtadienis</th>
-                        <th>Penktadienis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>17:10-18:10</td>
-                        <td>6-9 m.</td>
-                        <td></td>
-                        <td>6-9 m.</td>
-                        <td></td>
-                        <td>6-9 m.</td>
-                    </tr>
-                    <tr>
-                        <td>18:10-19:20</td>
-                        <td>8-12 m.</td>
-                        <td></td>
-                        <td>8-12 m.</td>
-                        <td></td>
-                        <td>8-12 m.</td>
-                    </tr>
-                    <tr>
-                        <td>19:20-20:30</td>
-                        <td>13+ m.</td>
-                        <td></td>
-                        <td>13+ m.</td>
-                        <td></td>
-                        <td>13+ m.</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div id="kedainiu-lentele" class="table-responsive"></div>
 
-        </div>
-        <p>* Treniruočių amžiaus grupės yra preliminarios: atsižvelgę į sportininko fizinį ir techninį pasiruošimą
-            treneriai rekomenduoja tinkamiausią grupę.</p>
+        <p class="mt-4">* Treniruočių amžiaus grupės yra preliminarios: atsižvelgė į sportininko fizinį ir techninį pasiruošimą treneriai rekomenduoja tinkamiausią grupę.</p>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
             <p class="mb-0">&copy; 2025 Stoikas Karate Klubas. Visos teisės saugomos.</p>
@@ -149,27 +55,61 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
-fetch('/content/treniruociu-grafikai.md')
-  .then(res => res.text())
-  .then(md => {
-    const front = md.split('---')[1];
-    const data = Object.fromEntries(
-      front
-        .split('\n')
-        .filter(l => l.includes(':'))
-        .map(l => {
-          const [key, ...rest] = l.split(':');
-          return [key.trim(), rest.join(':').trim()];
-        })
-    );
+    fetch('/content/treniruociu-grafikai.md')
+        .then(res => res.text())
+        .then(md => {
+            const kaunas = [];
+            const kedainiai = [];
 
-    document.querySelector("h1").innerText = data.puslapio_pavadinimas || 'Treniruočių grafikai';
-    // Dabar gali įrašyti ir lentelę...
-  });
-</script>
+            const matchKaunas = md.match(/kaunas_lentele:[\s\S]*?\n\n/);
+            const matchKedainiai = md.match(/kedainiai_lentele:[\s\S]*?---/);
 
+            if (matchKaunas) {
+                const lines = matchKaunas[0].split('\n').slice(1);
+                let row = [];
+                lines.forEach(line => {
+                    if (line.includes('- cell:')) {
+                        row.push(line.split('- cell:')[1].trim().replace(/['"]/g, ''));
+                    } else if (line.includes('cells:')) {
+                        if (row.length > 0) kaunas.push(row);
+                        row = [];
+                    }
+                });
+                if (row.length > 0) kaunas.push(row);
+            }
+
+            if (matchKedainiai) {
+                const lines = matchKedainiai[0].split('\n').slice(1);
+                let row = [];
+                lines.forEach(line => {
+                    if (line.includes('- cell:')) {
+                        row.push(line.split('- cell:')[1].trim().replace(/['"]/g, ''));
+                    } else if (line.includes('cells:')) {
+                        if (row.length > 0) kedainiai.push(row);
+                        row = [];
+                    }
+                });
+                if (row.length > 0) kedainiai.push(row);
+            }
+
+            const headers = ["Treniruočių laikas", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis"];
+
+            function createTable(rows) {
+                return `
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}
+                    </tbody>
+                </table>`;
+            }
+
+            document.getElementById("kauno-lentele").innerHTML = createTable(kaunas);
+            document.getElementById("kedainiu-lentele").innerHTML = createTable(kedainiai);
+        });
+    </script>
 </body>
-
 </html>
