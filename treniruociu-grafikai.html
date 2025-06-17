@@ -74,10 +74,14 @@
     .then(res => res.text())
     .then(md => {
       const extractField = (key) => {
-        const regex = new RegExp(`${key}\\s*:\\s*(.*)`);
-        const match = md.match(regex);
-        return match ? match[1].trim().replace(/^"|"$/g, '') : '';
-      };
+  const regex = new RegExp(`${key}\\s*:\\s*(\\|\\s*\\n([\\s\\S]*?))(?=\\n\\w|\\n---|$)|${key}\\s*:\\s*"?([^\\n"]*)"?`, 'm');
+  const match = md.match(regex);
+  if (match) {
+    if (match[2]) return match[2].trim(); // daugiaeilis
+    if (match[3]) return match[3].trim(); // vienaeilis
+  }
+  return '';
+};
 
       document.getElementById("puslapio_pavadinimas").innerText = extractField("puslapio_pavadinimas");
       document.getElementById("kaunas_title").innerText = extractField("kaunas_title");
