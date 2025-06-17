@@ -33,3 +33,17 @@ collections:
           - { label: "Facebook puslapis", name: "facebook", widget: "string" }
           - { label: "Stoiko grupė", name: "grupe", widget: "string" }
 
+  - name: "adresai"
+    label: "Treniruočių adresai"
+    files:
+      - label: "Adresai"
+        name: "treniruociu_adresai"
+        file: "content/treniruociu-adresai.md"
+        fields:
+          - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
+          - { label: "Kauno adresas (žemėlapiui)", name: "kaunas_adresas", widget: "string" }
+          - { label: "Kauno aprašymas", name: "kaunas_aprasymas", widget: "string" }
+          - { label: "Kėdainių adresas (žemėlapiui)", name: "kedainiai_adresas", widget: "string" }
+          - { label: "Kėdainių aprašymas", name: "kedainiai_aprasymas", widget: "string" }
+
+
