@@ -46,7 +46,7 @@ collections:
           - { label: "Kėdainių adresas (žemėlapiui)", name: "kedainiai_adresas", widget: "string" }
           - { label: "Kėdainių aprašymas", name: "kedainiai_aprasymas", widget: "string" }
 
-    - name: "grafikai"
+  - name: "grafikai"
     label: "Treniruočių grafikai"
     files:
       - label: "Treniruočių grafikai"
