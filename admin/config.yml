@@ -54,13 +54,11 @@ collections:
         file: "content/treniruociu-grafikai.md"
         fields:
           - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
-
           - { label: "Kaunas: Antraštė", name: "kaunas_title", widget: "string" }
           - { label: "Kaunas: Įžanga", name: "kaunas_intro", widget: "string" }
           - { label: "Kaunas: Grafiko paveikslėlis", name: "kaunas_img", widget: "image" }
           - { label: "Kaunas: Pastaba", name: "kaunas_note", widget: "string" }
           - { label: "Kaunas: Pastaba 2", name: "kaunas_note_2", widget: "string" }
-
           - { label: "Kėdainiai: Antraštė", name: "kedainiai_title", widget: "string" }
           - { label: "Kėdainiai: Įžanga", name: "kedainiai_intro", widget: "string" }
           - { label: "Kėdainiai: Grafiko paveikslėlis", name: "kedainiai_img", widget: "image" }
@@ -77,14 +75,13 @@ collections:
           - { label: "Hero įžanga", name: "hero_intro", widget: "string" }
           - { label: "Registracijos nuoroda", name: "registracijos_nuoroda", widget: "string" }
           - { label: "Įžangos tekstas", name: "intro_tekstas", widget: "string" }
-          - {
-              label: "Klubo privalumai",
-              name: "privalumai",
-              widget: "list",
-              field: { label: "Punktas", name: "punktas", widget: "string" }
-            }
-        - { label: "Kvietimas", name: "kvietimas", widget: "text" }
-        - { label: "Amžiaus grupė", name: "amziaus_grupe", widget: "string" }
-        - { label: "Pabaigos tekstas", name: "pabaigos_tekstas", widget: "string" }
-
-
+          - label: "Klubo privalumai"
+            name: "privalumai"
+            widget: "list"
+            field:
+              label: "Punktas"
+              name: "punktas"
+              widget: "string"
+          - { label: "Kvietimas", name: "kvietimas", widget: "text" }
+          - { label: "Amžiaus grupė", name: "amziaus_grupe", widget: "string" }
+          - { label: "Pabaigos tekstas", name: "pabaigos_tekstas", widget: "string" }
