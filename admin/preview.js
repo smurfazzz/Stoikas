@@ -29,8 +29,8 @@ function renderTable(rows) {
 const TreniruočiųGrafikaiPreview = ({ entry }) => {
   const data = entry.get("data").toJS();
 
-  const kaunasLentele = (data.kaunas_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
-  const kedainiaiLentele = (data.kedainiai_lentele || []).map(row => row.cells?.map(c => c.cell) || []);
+  const kaunasLentele = (data.kaunas_lentele || []).map(row => row.cells?.map(c => c.langas) || []);
+  const kedainiaiLentele = (data.kedainiai_lentele || []).map(row => row.cells?.map(c => c.langas) || []);
 
   const container = document.createElement("div");
   container.className = "container py-5";
