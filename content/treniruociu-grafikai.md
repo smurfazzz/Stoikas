@@ -8,7 +8,7 @@ kaunas_note: |
   * **VD** – vidurinis lygis
   * **P** – pažengusiųjų lygis
 kaunas_note_2: |
-* Treniruočių amžiaus grupės yra preliminarios – atsižvelgę į
+  * Treniruočių amžiaus grupės yra preliminarios – atsižvelgę į
   sportininko fizinį ir techninį pasiruošimą treneriai rekomenduoja tinkamiausią
   grupę..
 kedainiai_title: Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas
