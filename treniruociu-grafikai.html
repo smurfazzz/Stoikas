@@ -33,19 +33,19 @@
     </nav>
 
     <main class="container py-5">
-        <h1 class="display-4 text-center mb-5">Treniruočių grafikai</h1>
+        <h1 id="page-title" class="display-4 text-center mb-5">Treniruočių grafikai</h1>
 
         <!-- Kaunas -->
-        <h2 class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
+        <h2 id="kaunas-title" class="mb-3">Treniruočių grafikas Kaune 2024/25 m. sezonas</h2>
         <div id="kauno-lentele" class="table-responsive"></div>
 
         <hr class="my-5">
 
         <!-- Kėdainiai -->
-        <h2 class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
+        <h2 id="kedainiai-title" class="mb-3">Treniruočių grafikas Kėdainiuose 2024/25 m. sezonas</h2>
         <div id="kedainiu-lentele" class="table-responsive"></div>
 
-        <p class="mt-4">* Treniruočių amžiaus grupės yra preliminarios: atsižvelgė į sportininko fizinį ir techninį pasiruošimą treneriai rekomenduoja tinkamiausią grupę.</p>
+        <p id="grafikai-footnote" class="mt-4">* Treniruočių amžiaus grupės yra preliminarios: atsižvelgę į sportininko fizinį ir techninį pasiruošimą treneriai rekomenduoja tinkamiausią grupę.</p>
     </main>
 
     <footer class="bg-dark text-light py-4 mt-5">
@@ -106,6 +106,17 @@
                     </tbody>
                 </table>`;
             }
+
+            // Dynamically replace headings and note
+            const headingMatch = md.match(/puslapio_pavadinimas:\s*(.*)/);
+            const kaunasTitle = md.match(/kaunas_intro:\s*(.*)/);
+            const kedainiaiTitle = md.match(/kedainiai_intro:\s*(.*)/);
+            const note = md.match(/grafikai_pastaba:\s*(.*)/);
+
+            if (headingMatch) document.getElementById("page-title").innerText = headingMatch[1];
+            if (kaunasTitle) document.getElementById("kaunas-title").innerText = kaunasTitle[1];
+            if (kedainiaiTitle) document.getElementById("kedainiai-title").innerText = kedainiaiTitle[1];
+            if (note) document.getElementById("grafikai-footnote").innerText = note[1];
 
             document.getElementById("kauno-lentele").innerHTML = createTable(kaunas);
             document.getElementById("kedainiu-lentele").innerHTML = createTable(kedainiai);
