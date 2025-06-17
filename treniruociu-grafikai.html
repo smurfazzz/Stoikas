@@ -74,10 +74,13 @@
     .then(res => res.text())
     .then(md => {
   const extractField = (key) => {
-  const regex = new RegExp(`${key}:\\s*(.*(?:\\n  .*)*)`);
+  const regex = new RegExp(`${key}:\\s*\\|\\s*\\n([\\s\\S]+?)(?=\\n\\w|\\n---|$)`, 'm');
   const match = md.match(regex);
-  return match ? match[1].trim() : '';
+  if (match) return match[1].trim();
+  const fallback = md.match(new RegExp(`${key}:\\s*(.+)`));
+  return fallback ? fallback[1].trim().replace(/^"|"$/g, '') : '';
 };
+
 
 
 
