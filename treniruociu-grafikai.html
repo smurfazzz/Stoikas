@@ -7,6 +7,7 @@
     <title>Treniruočių grafikai - Stoikas Karate Klubas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
@@ -81,13 +82,13 @@
       document.getElementById("puslapio_pavadinimas").innerText = extractField("puslapio_pavadinimas");
       document.getElementById("kaunas_title").innerText = extractField("kaunas_title");
       document.getElementById("kaunas_intro").innerText = extractField("kaunas_intro");
-      document.getElementById("kaunas_note").innerText = extractField("kaunas_note");
-      document.getElementById("kaunas_note_2").innerText = extractField("kaunas_note_2");
+      document.getElementById("kaunas_note").innerHTML = marked.parse(extractField("kaunas_note"));
+      document.getElementById("kaunas_note_2").innerHTML = marked.parse(extractField("kaunas_note_2"));
       document.getElementById("kaunas_img").src = extractField("kaunas_img");
 
       document.getElementById("kedainiai_title").innerText = extractField("kedainiai_title");
       document.getElementById("kedainiai_intro").innerText = extractField("kedainiai_intro");
-      document.getElementById("kedainiai_note").innerText = extractField("kedainiai_note");
+      document.getElementById("kedainiai_note").innerHTML = marked.parse(extractField("kedainiai_note"));
       document.getElementById("kedainiai_img").src = extractField("kedainiai_img");
     });
 </script>
