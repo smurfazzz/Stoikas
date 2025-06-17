@@ -100,29 +100,29 @@
         .then(res => res.text())
         .then(md => {
             function extractField(md, key) {
-                const lines = md.split('\n');
-                const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
-                if (startIndex === -1) return '';
+  const lines = md.split('\n');
+  const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
+  if (startIndex === -1) return '';
 
-                const valueLine = lines[startIndex].slice((key + ':').length).trim();
+  let firstLine = lines[startIndex].slice((key + ':').length).trim();
+  const result = [];
 
-                if (valueLine && !valueLine.startsWith('|') && !valueLine.startsWith('-')) {
-                    return valueLine.replace(/^"|"$/g, '');
-                }
+  // Jei yra reikšmė iškart po dvitaškio
+  if (firstLine) {
+    result.push(firstLine);
+  }
 
-                const result = [];
-                for (let i = startIndex + 1; i < lines.length; i++) {
-                    const line = lines[i];
-                    if (/^\S/.test(line)) break; // naujas raktas
-                    if (line.trimStart().startsWith('-')) {
-                        result.push(line.trimStart().replace(/^[-*+]\s*/, ''));
-                    } else {
-                        result.push(line.trimStart());
-                    }
-                }
+  // Skaityti kitas įtrauktas eilutes
+  for (let i = startIndex + 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (/^\S/.test(line)) break; // naujas raktas – baigti
 
-                return result.join('\n');
-            }
+    result.push(line.trim());
+  }
+
+  return result.join(' ');
+}
+
 
             document.getElementById("hero_title").innerText = extractField(md, "puslapio_pavadinimas");
             document.getElementById("hero_subtitle").innerText = extractField(md, "hero_intro");
