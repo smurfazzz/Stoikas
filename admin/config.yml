@@ -58,11 +58,11 @@ collections:
           - { label: "Kaunas: Antraštė", name: "kaunas_title", widget: "string" }
           - { label: "Kaunas: Įžanga", name: "kaunas_intro", widget: "string" }
           - { label: "Kaunas: Grafiko paveikslėlis", name: "kaunas_img", widget: "image" }
-          - { label: "Kaunas: Pastaba", name: "kaunas_note", widget: "string" }
-          - { label: "Kaunas: Pastaba 2", name: "kaunas_note_2", widget: "string" }
+          - { label: "Kaunas: Pastaba", name: "kaunas_note", widget: "markdown" }
+          - { label: "Kaunas: Pastaba 2", name: "kaunas_note_2", widget: "markdown" }
 
           - { label: "Kėdainiai: Antraštė", name: "kedainiai_title", widget: "string" }
           - { label: "Kėdainiai: Įžanga", name: "kedainiai_intro", widget: "string" }
           - { label: "Kėdainiai: Grafiko paveikslėlis", name: "kedainiai_img", widget: "image" }
-          - { label: "Kėdainiai: Pastaba", name: "kedainiai_note", widget: "string" }
+          - { label: "Kėdainiai: Pastaba", name: "kedainiai_note", widget: "markdown" }
 
