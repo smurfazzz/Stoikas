@@ -54,8 +54,9 @@ collections:
         file: "content/treniruociu-grafikai.md"
         fields:
           - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
-          
-          - { label: "Kaunas: Įžanga", name: "kaunas_intro", widget: "string" }
+
+          - { label: "Kaunas: Antraštė", name: "kaunas_title", widget: "string" }
+          - { label: "Kaunas: Įžanga (raudonas tekstas)", name: "kaunas_intro", widget: "string" }
           - label: "Kaunas: Lentelė"
             name: "kaunas_lentele"
             widget: "list"
@@ -68,11 +69,11 @@ collections:
                   label: "Langas"
                   name: "cell"
                   widget: "string"
-          - { label: "Kaunas: Paaiškinimai po lentele", name: "kaunas_footer", widget: "markdown" }
-          - { label: "Kaunas: Papildomas tekstas", name: "kaunas_extra", widget: "text" }
+          - { label: "Kaunas: Legenda", name: "kaunas_legenda", widget: "text" }
+          - { label: "Kaunas: Pastaba po lentele (raudonas tekstas)", name: "grafikai_pastaba_kaunas", widget: "text" }
 
-          - { label: "Kėdainiai: Įžanga", name: "kedainiai_intro", widget: "string" }
-
+          - { label: "Kėdainiai: Antraštė", name: "kedainiai_title", widget: "string" }
+          - { label: "Kėdainiai: Įžanga (raudonas tekstas)", name: "kedainiai_intro", widget: "string" }
           - label: "Kėdainiai: Lentelė"
             name: "kedainiai_lentele"
             widget: "list"
@@ -85,4 +86,5 @@ collections:
                   label: "Langas"
                   name: "cell"
                   widget: "string"
-          - { label: "Kėdainiai: Papildomas tekstas", name: "kedainiai_extra", widget: "text" }
+          - { label: "Kėdainiai: Pastaba po lentele (raudonas tekstas)", name: "grafikai_pastaba_kedainiai", widget: "text" }
+
