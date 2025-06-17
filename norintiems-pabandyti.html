@@ -96,59 +96,69 @@
   </footer>
 
   <script>
-    fetch('/content/norintiems-pabandyti.md')
-        .then(res => res.text())
-        .then(md => {
-            function extractField(md, key) {
-  const lines = md.split('\n');
-  const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
-  if (startIndex === -1) return '';
+  fetch('/content/norintiems-pabandyti.md')
+    .then(res => res.text())
+    .then(md => {
+      function extractField(md, key) {
+        const lines = md.split('\n');
+        const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
+        if (startIndex === -1) return '';
 
-  let firstLine = lines[startIndex].slice((key + ':').length).trim();
-  const result = [];
+        let firstLine = lines[startIndex].slice((key + ':').length).trim();
+        const result = [];
 
-  // Jei yra reikšmė iškart po dvitaškio
-  if (firstLine) {
-    result.push(firstLine);
-  }
+        if (firstLine) {
+          result.push(firstLine);
+        }
 
-  // Skaityti kitas įtrauktas eilutes
-  for (let i = startIndex + 1; i < lines.length; i++) {
-    const line = lines[i];
-    if (/^\S/.test(line)) break; // naujas raktas – baigti
+        for (let i = startIndex + 1; i < lines.length; i++) {
+          const line = lines[i];
+          if (/^\S/.test(line)) break;
+          result.push(line.trim());
+        }
 
-    result.push(line.trim());
-  }
+        return result.join(' ');
+      }
 
-  return result.join(' ');
-}
+      function extractListField(md, key) {
+        const lines = md.split('\n');
+        const startIndex = lines.findIndex(line => line.startsWith(`${key}:`));
+        if (startIndex === -1) return [];
 
+        const result = [];
+        for (let i = startIndex + 1; i < lines.length; i++) {
+          const line = lines[i];
+          if (/^\S/.test(line)) break;
+          const cleaned = line.trim().replace(/^[-*+]\s*/, '');
+          if (cleaned) result.push(cleaned);
+        }
 
-            document.getElementById("hero_title").innerText = extractField(md, "puslapio_pavadinimas");
-            document.getElementById("hero_subtitle").innerText = extractField(md, "hero_intro");
+        return result;
+      }
 
-            const url = extractField(md, "registracijos_nuoroda");
-            document.getElementById("hero_btn").href = url;
-            document.getElementById("register_btn_2").href = url;
-            document.getElementById("register_btn_3").href = url;
+      document.getElementById("hero_title").innerText = extractField(md, "puslapio_pavadinimas");
+      document.getElementById("hero_subtitle").innerText = extractField(md, "hero_intro");
 
-            document.getElementById("intro_text").innerText = extractField(md, "intro_tekstas");
+      const url = extractField(md, "registracijos_nuoroda");
+      document.getElementById("hero_btn").href = url;
+      document.getElementById("register_btn_2").href = url;
+      document.getElementById("register_btn_3").href = url;
 
-            const benefitsRaw = extractField(md, "privalumai");
-            const benefitsList = document.getElementById("benefits_list");
-            benefitsList.innerHTML = '';
-            benefitsRaw.split('\n').forEach(line => {
-                if (line.trim()) {
-                    const li = document.createElement('li');
-                    li.textContent = line.trim();
-                    benefitsList.appendChild(li);
-                }
-            });
+      document.getElementById("intro_text").innerText = extractField(md, "intro_tekstas");
 
-            document.getElementById("after_benefits").innerText = extractField(md, "kvietimas");
-            document.getElementById("final_reminder").innerText = extractField(md, "amziaus_grupe");
-            document.getElementById("closing_line").innerText = extractField(md, "pabaigos_tekstas");
-        });
+      const benefitsList = document.getElementById("benefits_list");
+      const benefits = extractListField(md, "privalumai");
+      benefitsList.innerHTML = '';
+      benefits.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        benefitsList.appendChild(li);
+      });
+
+      document.getElementById("after_benefits").innerText = extractField(md, "kvietimas");
+      document.getElementById("final_reminder").innerText = extractField(md, "amziaus_grupe");
+      document.getElementById("closing_line").innerText = extractField(md, "pabaigos_tekstas");
+    });
 </script>
 
 fetch('/content/norintiems-pabandyti.md').then(r => r.text()).then(console.log)
