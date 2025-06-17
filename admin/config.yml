@@ -56,30 +56,27 @@ collections:
           - { label: "Puslapio pavadinimas", name: "puslapio_pavadinimas", widget: "string" }
 
           - label: "Kaunas: Lentelė"
-  name: "kaunas_lentele"
-  widget: "list"
-  label_singular: "Eilutė"
-  fields:
-    - label: "Langeliai"
-      name: "cells"
-      widget: "list"
-      field:
-        label: "Langas"
-        name: "cell"
-        widget: "string"
+            name: "kaunas_lentele"
+            widget: "list"
+            label_singular: "Eilutė"
+            fields:
+              - label: "Langeliai"
+                name: "cells"
+                widget: "list"
+                field:
+                  label: "Langas"
+                  name: "cell"
+                  widget: "string"
 
-- label: "Kėdainiai: Lentelė"
-  name: "kedainiai_lentele"
-  widget: "list"
-  label_singular: "Eilutė"
-  fields:
-    - label: "Langeliai"
-      name: "cells"
-      widget: "list"
-      field:
-        label: "Langas"
-        name: "cell"
-        widget: "string"
-
-
-
+          - label: "Kėdainiai: Lentelė"
+            name: "kedainiai_lentele"
+            widget: "list"
+            label_singular: "Eilutė"
+            fields:
+              - label: "Langeliai"
+                name: "cells"
+                widget: "list"
+                field:
+                  label: "Langas"
+                  name: "cell"
+                  widget: "string"
