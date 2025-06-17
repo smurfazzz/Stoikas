@@ -10,7 +10,7 @@ collections:
   - name: "pradzia"
     label: "Pagrindinis puslapis"
     files:
-      - label: "Index"
+      - label: "Pagrindinis puslapis"
         name: "index"
         file: "content/index.md"
         fields:
