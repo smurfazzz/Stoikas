@@ -10,102 +10,107 @@
 
 <body>
 
- <!-- Sticky Navigation -->
+  <!-- Sticky Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand" href="index.html"><img src="assets/img/logo_stoikas.svg" alt="Stoikas" style="height:40px;"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Pradžia</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Pradžia</a></li>
           <li class="nav-item"><a class="nav-link" href="kontaktai.html">Kontaktai</a></li>
-          <li class="nav-item"><a class="nav-link" href="galerija.html">Galerija</a></li>
+          <li class="nav-item"><a class="nav-link active" href="galerija.html">Galerija</a></li>
           <li class="nav-item"><a class="nav-link" href="treniruociu-adresai.html">Treniruotės adresai</a></li>
           <li class="nav-item"><a class="nav-link" href="treniruociu-grafikai.html">Treniruotės grafikai</a></li>
           <li class="nav-item"><a class="nav-link" href="norintiems-pabandyti.html">Norintiems pabandyti</a></li>
           <li class="nav-item"><a class="nav-link" href="1-2proc-gpm-parama.html">1,2% GPM parama</a></li>
-          <li class="nav-item"><a class="nav-link" href="egzaminu-technika.html">Egzaminų technika</a></li>
-          <li class="nav-item"><a class="nav-link" href="remejai.html">Rėmėjai</a></li>
-          <li class="nav-item"><a class="nav-link" href="nsa-projektas.html">NSA projektas</a></li>
         </ul>
       </div>
     </div>
   </nav>
-<div class="container">
-  <div class="gallery-title">FOTO GALERIJA</div>
 
-  <div class="row g-3" id="gallery-container">
-    <!-- Nuotraukos bus sugeneruotos per JS -->
+  <div class="container">
+    <div class="gallery-title">FOTO GALERIJA</div>
+    <div class="row g-3" id="gallery-container"></div>
   </div>
-</div>
 
-<!-- Lightbox -->
-<div id="lightbox">
-  <span class="close" onclick="closeLightbox()">&times;</span>
-  <div class="nav">
-    <div onclick="prevImage()">&#10094;</div>
-    <div onclick="nextImage()">&#10095;</div>
+  <!-- Lightbox -->
+  <div id="lightbox" onclick="if(event.target===this) closeLightbox()">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <div class="nav">
+      <div onclick="prevImage()">&#10094;</div>
+      <div onclick="nextImage()">&#10095;</div>
+    </div>
+    <img id="lightbox-img">
+    <div id="lightbox-caption" class="text-center text-light mt-3 fs-5"></div>
   </div>
-  <img id="lightbox-img">
-  <div id="lightbox-caption" class="text-center text-light mt-3 fs-5"></div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
 
-<script>
-  let images = [];
-  let currentIndex = 0;
+  <script>
+    let images = [];
+    let currentIndex = 0;
 
-  fetch('/content/galerija.md')
-    .then(res => res.text())
-    .then(md => {
-      const frontMatter = md.split('---')[1];
-      const yamlData = jsyaml.load(frontMatter);
-      images = yamlData.nuotraukos;
-      renderGallery();
+    fetch('/content/galerija.md')
+      .then(res => res.text())
+      .then(md => {
+        const frontMatter = md.split('---')[1];
+        const yamlData = jsyaml.load(frontMatter);
+        images = yamlData.nuotraukos;
+        renderGallery();
+      });
+
+    function renderGallery() {
+      const container = document.getElementById("gallery-container");
+      container.innerHTML = '';
+      images.forEach((img, index) => {
+        const col = document.createElement("div");
+        col.className = "col-sm-6 col-md-4 col-lg-3";
+
+        const image = document.createElement("img");
+        image.src = img.img;
+        image.alt = img.title || "";
+        image.className = "img-fluid gallery-img";
+        image.onclick = () => openLightbox(index);
+
+        col.appendChild(image);
+        container.appendChild(col);
+      });
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      document.getElementById("lightbox-img").src = images[index].img;
+      document.getElementById("lightbox-caption").innerText = images[index].title + " — " + images[index].caption;
+      document.getElementById("lightbox").classList.add("show");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("show");
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      openLightbox(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      openLightbox(currentIndex);
+    }
+
+    // Klaviatūros valdymas:
+    document.addEventListener("keydown", function(e) {
+      if (document.getElementById("lightbox").classList.contains("show")) {
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+        if (e.key === "Escape") closeLightbox();
+      }
     });
+  </script>
 
-  function renderGallery() {
-    const container = document.getElementById("gallery-container");
-    container.innerHTML = '';
-    images.forEach((img, index) => {
-      const col = document.createElement("div");
-      col.className = "col-sm-6 col-md-4 col-lg-3";
-
-      const image = document.createElement("img");
-      image.src = img.img;
-      image.className = "img-fluid gallery-img";
-      image.onclick = () => openLightbox(index);
-
-      col.appendChild(image);
-      container.appendChild(col);
-    });
-  }
-
-  function openLightbox(index) {
-    currentIndex = index;
-    document.getElementById("lightbox-img").src = images[index].img;
-    document.getElementById("lightbox-caption").innerText = images[index].title + " — " + images[index].caption;
-    document.getElementById("lightbox").style.display = "block";
-  }
-
-  function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
-  }
-
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    openLightbox(currentIndex);
-  }
-
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    openLightbox(currentIndex);
-  }
-</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
