@@ -49,6 +49,56 @@
     <div class="container text-center">
       <p class="mb-0">&copy; 2025 Stoikas Karate Klubas. Visos teisės saugomos.</p>
     </div>
+
+<!-- GALERIJA SEKCIJA -->
+<section class="container my-5">
+  <div class="text-center mb-4">
+    <a href="galerija.html" class="btn btn-danger btn-lg px-5">GALERIJA</a>
+  </div>
+
+  <div class="mb-4">
+    <img src="assets/img/galerija1.jpg" alt="Galerija 1" class="img-fluid rounded shadow gallery-img" onclick="openLightbox(this.src)">
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-6">
+      <img src="assets/img/galerija2.jpg" alt="Galerija 2" class="img-fluid rounded shadow gallery-img" onclick="openLightbox(this.src)">
+    </div>
+    <div class="col-md-6">
+      <img src="assets/img/galerija3.jpg" alt="Galerija 3" class="img-fluid rounded shadow gallery-img" onclick="openLightbox(this.src)">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;">
+  <span style="position:absolute; top:20px; right:30px; font-size:40px; color:white; cursor:pointer;" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" style="max-width:90%; max-height:90%;">
+</div>
+
+<!-- CSS efektai -->
+<style>
+  .gallery-img {
+    transition: transform 0.4s ease;
+    cursor: pointer;
+  }
+  .gallery-img:hover {
+    transform: scale(1.05);
+  }
+</style>
+
+<!-- Lightbox funkcijos -->
+<script>
+  function openLightbox(src) {
+    document.getElementById("lightbox-img").src = src;
+    document.getElementById("lightbox").style.display = "flex";
+  }
+  function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+  }
+</script>
+
+    
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
