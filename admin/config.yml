@@ -85,3 +85,17 @@ collections:
           - { label: "Kvietimas", name: "kvietimas", widget: "text" }
           - { label: "Amžiaus grupė", name: "amziaus_grupe", widget: "string" }
           - { label: "Pabaigos tekstas", name: "pabaigos_tekstas", widget: "string" }
+  - name: "galerija"
+  label: "Galerija"
+  files:
+    - label: "Galerijos nuotraukos"
+      name: "galerijos_fotografijos"
+      file: "content/galerija.md"
+      fields:
+        - label: "Nuotraukos"
+          name: "nuotraukos"
+          widget: "list"
+          fields:
+            - { label: "Paveikslėlis", name: "img", widget: "image" }
+            - { label: "Pavadinimas", name: "title", widget: "string" }
+            - { label: "Aprašymas", name: "caption", widget: "string" }
