@@ -1,14 +1,14 @@
 ---
 nuotraukos:
   - img: /assets/img/galerija1.jpg
-    title: Kihon
-    caption: Technikos treniruotė lauke
+    title: Technikos treniruotė lauke
+    caption: Gintarė Juknienė nuotrauka
   - img: /assets/img/galerija2.jpg
     title: Kata
-    caption: Formos demonstracija
+    caption: Gintarė Juknienė nuotrauka
   - img: /assets/img/galerija3.jpg
     title: Kumite
-    caption: Mokomasis kontaktinis kovos etapas
+    caption: Gintarė Juknienė nuotrauka
   - img: /assets/img/kata-lietuje-gintarė-juknienė-nuotrauka.jpg
     title: Kata lietuje
     caption: Gintarės Juknienės nuotrauka
