@@ -92,12 +92,12 @@ collections:
         name: "galerijos_fotografijos"
         file: "content/galerija.md"
         fields:
-          - label: "Nuotraukos"
+          - label: "Nuotraukų sąrašas"
             name: "nuotraukos"
             widget: "list"
-            reverse: true
+            summary: "{{fields.title}}"
             fields:
               - { label: "Paveikslėlis", name: "img", widget: "image" }
               - { label: "Pavadinimas", name: "title", widget: "string" }
-              - { label: "Aprašymas", name: "caption", widget: "string" }
+              - { label: "Aprašymas (caption)", name: "caption", widget: "text" }
 
