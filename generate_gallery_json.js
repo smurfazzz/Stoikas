@@ -1,30 +1,14 @@
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
+const yaml = require('js-yaml');
 
-// Galerijos md failų aplankas
-const folder = './content/galerija';
+const mdPath = path.join(__dirname, 'content', 'galerija.md');
+const outputPath = path.join(__dirname, 'assets', 'gallery.json');
 
-// Galutinis JSON failas
-const output = './assets/data/gallery.json';
+const fileContent = fs.readFileSync(mdPath, 'utf8');
+const frontMatter = fileContent.split('---')[1];
+const data = yaml.load(frontMatter);
 
-const items = [];
+fs.writeFileSync(outputPath, JSON.stringify(data.nuotraukos, null, 2));
 
-fs.readdirSync(folder).forEach(file => {
-  const content = fs.readFileSync(path.join(folder, file), 'utf8');
-  const data = matter(content).data;
-
-  items.push({
-    img: data.img,
-    title: data.title,
-    caption: data.caption
-  });
-});
-
-// Išrikiuojam nuo naujausios
-items.sort((a, b) => (a.title < b.title) ? 1 : -1);
-
-fs.mkdirSync(path.dirname(output), { recursive: true });
-fs.writeFileSync(output, JSON.stringify(items, null, 2));
-
-console.log('✅ Gallery JSON sugeneruotas!');
+console.log('Gallery JSON successfully generated.');
