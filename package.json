@@ -1,0 +1,10 @@
+{
+  "name": "stoikas-site",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node generate_gallery_json.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}
