@@ -24,4 +24,13 @@ nuotraukos:
   - img: /assets/img/kovos.jpg
     title: Praktinės kovos
     caption: Stoikas
+  - img: /assets/img/dvikovu-treniruote.jpg
+    title: Draugystė laimi
+    caption: po kovų visada laimi draugystė
+  - img: /assets/img/praktines-kovos.jpg
+    title: kovų praktika
+    caption: Puiki proga mokytis tiesioginių kovų
+  - img: /assets/img/praktinės-kovos2.jpg
+    title: Kova
+    caption: vaikai labai pozityvūs
 ---
