@@ -1,5 +1,5 @@
 {
-  "name": "stoikas-gallery-cms",
+  "name": "stoikas-site",
   "version": "1.0.0",
   "scripts": {
     "generate-gallery": "node generate-gallery-json.js"
