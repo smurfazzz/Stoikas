@@ -58,61 +58,38 @@
     let currentIndex = 0;
 
     fetch('/content/galerija.md')
-      .then(res => res.text())
-      .then(md => {
-        const frontMatter = md.split('---')[1];
-        const yamlData = jsyaml.load(frontMatter);
-        images = yamlData.nuotraukos;
-        renderGallery();
-      });
+  .then(res => res.text())
+  .then(md => {
+    const yamlPart = md.split('---')[1];
+    const data = jsyaml.load(yamlPart);
+    const images = data.nuotraukos;
+    renderGallery(images);
+  });
 
-    function renderGallery() {
-      const container = document.getElementById("gallery-container");
-      container.innerHTML = '';
-      images.forEach((img, index) => {
-        const col = document.createElement("div");
-        col.className = "col-sm-6 col-md-4 col-lg-3";
+function renderGallery(images) {
+  const container = document.getElementById("gallery-container");
+  container.innerHTML = '';
+  images.forEach((img, index) => {
+    const col = document.createElement("div");
+    col.className = "col-sm-6 col-md-4 col-lg-3";
 
-        const image = document.createElement("img");
-        image.src = img.img;
-        image.alt = img.title || "";
-        image.className = "img-fluid gallery-img";
-        image.onclick = () => openLightbox(index);
+    const image = document.createElement("img");
+    image.src = img.img;
+    image.className = "img-fluid gallery-img";
+    image.onclick = () => openLightbox(index, images);
 
-        col.appendChild(image);
-        container.appendChild(col);
-      });
-    }
+    col.appendChild(image);
+    container.appendChild(col);
+  });
+}
 
-    function openLightbox(index) {
-      currentIndex = index;
-      document.getElementById("lightbox-img").src = images[index].img;
-      document.getElementById("lightbox-caption").innerText = images[index].title + " — " + images[index].caption;
-      document.getElementById("lightbox").classList.add("show");
-    }
+function openLightbox(index, images) {
+  currentIndex = index;
+  document.getElementById("lightbox-img").src = images[index].img;
+  document.getElementById("lightbox-caption").innerText = images[index].title + " — " + images[index].caption;
+  document.getElementById("lightbox").style.display = "block";
+}
 
-    function closeLightbox() {
-      document.getElementById("lightbox").classList.remove("show");
-    }
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      openLightbox(currentIndex);
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      openLightbox(currentIndex);
-    }
-
-    // Klaviatūros valdymas:
-    document.addEventListener("keydown", function(e) {
-      if (document.getElementById("lightbox").classList.contains("show")) {
-        if (e.key === "ArrowRight") nextImage();
-        if (e.key === "ArrowLeft") prevImage();
-        if (e.key === "Escape") closeLightbox();
-      }
-    });
   </script>
 
 
