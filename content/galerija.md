@@ -21,12 +21,12 @@ nuotraukos:
   - img: /assets/img/jaunių-ir-suaugusiųjų-lietuvos-kata-čempionatas-ir-jaunių-kovų-čempionatas3.jpg
     title: Čempionatas
     caption: Jaunių ir suaugusiųjų Lietuvos kata čempionatas ir jaunių kovų čempionatas
-  - img: /assets/img/kovos.jpg
-    title: Praktinės kovos
-    caption: Stoikas
   - img: /assets/img/dvikovu-treniruote.jpg
     title: Draugystė laimi
     caption: po kovų visada laimi draugystė
+  - img: /assets/img/kovos.jpg
+    title: Praktinės kovos
+    caption: Stoikas
   - img: /assets/img/praktines-kovos.jpg
     title: kovų praktika
     caption: Puiki proga mokytis tiesioginių kovų
