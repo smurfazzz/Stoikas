@@ -1,19 +1,16 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
-const mdFile = './content/galerija.md';
-const outputFile = './assets/gallery.json';
+const yamlContent = fs.readFileSync('content/galerija.md', 'utf8');
 
-function parseFrontMatter(content) {
-  const parts = content.split('---');
-  if (parts.length < 3) {
-    throw new Error("No valid front matter found");
-  }
-  return yaml.load(parts[1]);
-}
+// Ištraukiam YAML frontmatter iš .md failo
+const frontMatter = yamlContent.split('---')[1];
+const data = yaml.load(frontMatter);
 
-const mdContent = fs.readFileSync(mdFile, 'utf8');
-const data = parseFrontMatter(mdContent);
+const output = {
+  nuotraukos: data.nuotraukos
+};
 
-fs.writeFileSync(outputFile, JSON.stringify(data.nuotraukos, null, 2));
-console.log('gallery.json successfully generated!');
+// Išsaugom JSON į content/ katalogą
+fs.writeFileSync('content/gallery_data.json', JSON.stringify(output, null, 2));
+console.log("✅ gallery_data.json generated successfully");
