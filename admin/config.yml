@@ -96,6 +96,7 @@ collections:
             name: "nuotraukos"
             widget: "list"
             reverse: true
+            sortable: false
             fields:
               - { label: "Paveikslėlis", name: "img", widget: "image" }
               - { label: "Pavadinimas", name: "title", widget: "string" }
