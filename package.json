@@ -2,7 +2,7 @@
   "name": "stoikas-gallery-cms",
   "version": "1.0.0",
   "scripts": {
-    "generate-gallery": "node scripts/generate-gallery-json.js"
+    "generate-gallery": "node generate-gallery-json.js"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
