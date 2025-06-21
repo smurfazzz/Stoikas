@@ -33,4 +33,7 @@ nuotraukos:
   - img: /assets/img/praktinės-kovos2.jpg
     title: Kova
     caption: vaikai labai pozityvūs
+  - img: /assets/img/kovu-penktadienis.jpg
+    title: Kovų penktadienis
+    caption: Pavargę bet laimingi
 ---
