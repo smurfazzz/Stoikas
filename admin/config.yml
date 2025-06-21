@@ -95,7 +95,6 @@ collections:
           - label: "Nuotraukų sąrašas"
             name: "nuotraukos"
             widget: "list"
-            summary: "{{fields.title}}"
             fields:
               - { label: "Paveikslėlis", name: "img", widget: "image" }
               - { label: "Pavadinimas", name: "title", widget: "string" }
